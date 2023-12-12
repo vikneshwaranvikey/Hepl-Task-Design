@@ -1,22 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Space, Table } from 'antd';
+import axios from "axios";
+
+
+
 const columns = [
     {
+        key: '1',
+        title: 'ID',
+        dataIndex: 'id',
+        render: (text) => <a>{text}</a>,
+        sorter: (rec1, rec2) => {
+            return rec1.id - rec2.id
+        }
+    },
+    {
+        key: '1',
         title: 'Name',
         dataIndex: 'name',
-        key: 'name',
         render: (text) => <a>{text}</a>,
+        sorter: (rec1, rec2) => {
+            return rec1.name < rec2.name
+        }
+    },
+    {
+        key: '2',
+        title: 'E-Mail',
+        dataIndex: 'email',
 
     },
     {
-        title: 'Address',
-        dataIndex: 'address',
-        key: 'address',
-    },
-    {
+        key: '4',
         title: 'Action',
-        key: 'action',
-        render: (_, record) => (
+        render: () => (
             <Space size="middle">
                 <a ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-orange-300 fill-orange-400">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
@@ -30,51 +46,66 @@ const columns = [
         ),
     }
 ];
-const data = [
-    {
-        key: '1',
-        name: 'John Brown',
-        address: 'New York No. 1 Lake Park',
-
-    },
-    {
-        key: '2',
-        name: 'Jim Green',
-        address: 'London No. 1 Lake Park',
-    },
-    {
-        key: '3',
-        name: 'Joe Black',
-        address: 'Sydney No. 1 Lake Park',
-
-    },
-    {
-        key: '4',
-        name: 'Jim Green',
-        address: 'London No. 1 Lake Park',
-    },
-    {
-        key: '5',
-        name: 'Joe Black',
-        address: 'London No. 1 Lake Park',
-    },
-    {
-        key: '6',
-        name: 'Jim Green',
-        address: 'London No. 1 Lake Park',
-    },
-    {
-        key: '7',
-        name: 'John Brown',
-        address: 'London No. 1 Lake Park',
-    },
-];
-
 
 function Tables() {
+    const [Data, setData] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await axios.get("https://jsonplaceholder.typicode.com/users")
+            setData(result.data)
+        }
+        fetchData()
+    }, [])
+
+
     return (
-        <div><Table className=' font-bold' columns={columns} style={{ fontSize: "bold" }} dataSource={data} /></div>
+        <div ><Table className=' font-bold' columns={columns} style={{ fontSize: "bold" }} dataSource={Data} /></div>
     )
 }
 
 export default Tables;
+
+
+
+
+
+// const data = [
+//     {
+//         key: '1',
+//         name: 'John Brown',
+//         address: 'New York No. J Lake Park',
+
+//     },
+//     {
+//         key: '2',
+//         name: 'Aim Green',
+//         address: 'London No. A Lake Park',
+//     },
+//     {
+//         key: '3',
+//         name: 'Goe Black',
+//         address: 'Sydney No. G Lake Park',
+
+//     },
+//     {
+//         key: '4',
+//         name: 'Bim Green',
+//         address: 'London No. B Lake Park',
+//     },
+//     {
+//         key: '5',
+//         name: 'Koe Black',
+//         address: 'London No. K Lake Park',
+//     },
+//     {
+//         key: '6',
+//         name: 'Him Green',
+//         address: 'London No. H Lake Park',
+//     },
+//     {
+//         key: '7',
+//         name: 'Mohn Brown',
+//         address: 'London No. M Lake Park',
+//     },
+// ];
