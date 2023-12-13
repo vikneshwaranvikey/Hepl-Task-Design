@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from 'react'
+
 import { Space, Table } from 'antd';
-import axios from "axios";
-
-
 
 const columns = [
     {
@@ -27,7 +24,17 @@ const columns = [
         key: '2',
         title: 'E-Mail',
         dataIndex: 'email',
-
+        sorter: (re1, re2) => {
+            return re1.email < re2.email
+        }
+    },
+    {
+        key: '3',
+        title: 'Address',
+        dataIndex: 'address',
+        render: (val) => {
+            return val.street;
+        }
     },
     {
         key: '4',
@@ -47,17 +54,9 @@ const columns = [
     }
 ];
 
-function Tables() {
-    const [Data, setData] = useState([])
+function Tables(props) {
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await axios.get("https://jsonplaceholder.typicode.com/users")
-            setData(result.data)
-        }
-        fetchData()
-    }, [])
-
+    const { Data } = props  //passData Destructure
 
     return (
         <div ><Table className=' font-bold' columns={columns} style={{ fontSize: "bold" }} dataSource={Data} /></div>
