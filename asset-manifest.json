@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Hepl-Task-Design/static/css/main.c03c96f6.css",
-    "main.js": "/Hepl-Task-Design/static/js/main.128a631c.js",
+    "main.css": "/Hepl-Task-Design/static/css/main.feaadbc3.css",
+    "main.js": "/Hepl-Task-Design/static/js/main.b5f716d2.js",
     "static/media/Sidebar-Title.png": "/Hepl-Task-Design/static/media/Sidebar-Title.404c7fde5674f2ea875e.png",
     "index.html": "/Hepl-Task-Design/index.html",
-    "main.c03c96f6.css.map": "/Hepl-Task-Design/static/css/main.c03c96f6.css.map",
-    "main.128a631c.js.map": "/Hepl-Task-Design/static/js/main.128a631c.js.map"
+    "main.feaadbc3.css.map": "/Hepl-Task-Design/static/css/main.feaadbc3.css.map",
+    "main.b5f716d2.js.map": "/Hepl-Task-Design/static/js/main.b5f716d2.js.map"
   },
   "entrypoints": [
-    "static/css/main.c03c96f6.css",
-    "static/js/main.128a631c.js"
+    "static/css/main.feaadbc3.css",
+    "static/js/main.b5f716d2.js"
   ]
 }
