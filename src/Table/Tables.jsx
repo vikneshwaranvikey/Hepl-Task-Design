@@ -1,16 +1,30 @@
 
 import { Space, Table, message, Modal, Input } from 'antd';
 import { useEffect, useState } from 'react';
-
+import TransparentLoader from '../loader/TransparentLoader';
 function Tables(props) {
 
     const { searchData } = props  //passData Destructure
     const [dataSource, setDataSource] = useState(searchData);
     const [editrecord, setEditrRecord] = useState(null);
     const [isEdit, setIsEdit] = useState(false);
+    const [loader, setLoader] = useState(true);
+
     useEffect(() => {
-        // You can use dataSource in useEffect or perform other operations
-        setDataSource(searchData);
+        const fetchData = async () => {
+            try {
+                setTimeout(() => {
+                    setDataSource(searchData);
+                    setLoader(false);
+                }, 1000);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+
+            }
+        };
+
+        fetchData();
+
     }, [searchData]);
 
     const columns = [
@@ -94,7 +108,8 @@ function Tables(props) {
         setEditrRecord(null);
     };
     return (
-        <div ><Table className=' font-bold' columns={columns} style={{ fontSize: "bold" }} dataSource={dataSource} />
+        <div >
+            {loader ? <TransparentLoader /> : <Table className=' font-bold' columns={columns} style={{ fontSize: "bold" }} dataSource={dataSource} />}
             <Modal
                 title="Edit Student"
                 visible={isEdit}

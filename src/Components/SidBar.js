@@ -13,7 +13,7 @@ function SidBar({ click }) {
             </div>
             <h3 className="m-6 text-white text-sm">Masters</h3>
             <div className="flex items-center justify-center">
-                <button className="flex items-center bg-orange-600 hover:bg-orange-500 shadow-lg shadow-orange-500/50 p-2 h-14 w-60 rounded-md font-medium text-white text-base"><img className="w-1/12 mx-4" src={pnd} alt="Your SVG" />Master Records</button>
+                <button className="flex items-center bg-orange-600 hover:bg-orange-500 shadow-lg shadow-orange-500/50 p-2 h-14 w-60 rounded-md font-medium text-white text-base"><img className="w-1/12 mx-4" src={pnd} alt="Your SVG" />Master Record</button>
             </div>
         </div>
     )
